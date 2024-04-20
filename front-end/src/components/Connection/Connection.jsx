@@ -50,7 +50,6 @@ export default function Connection({ setModal, isConnected, setIsConnected }) {
         validateErrorMessage(result.errors.message, setFormDataError)
       } else {
         setFormDataError({})
-        console.log(result)
         if(result.errors){
           setModal((modal) => { return { ...modal, status: 'failed', show: true, msg: result.errors.message }})
           if(result?.data){
@@ -93,9 +92,9 @@ export default function Connection({ setModal, isConnected, setIsConnected }) {
             <Input name={'password'} data={formData.password} error={formDataError.password} handleChange={handleChange} />
             <div className="flex gap-4 md:col-span-2 justify-end mt-10 md:mt-0 mb-10">
               <button type="button" className="px-2 sm:px-4 py-2 bg-blue-700 hover:bg-blue-600 flex items-center justify-center gap-2" onClick={testConnection}>
-              {loadingConnection.isLoadingTest ? <div class="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-blue-600" /> : ''} Test Connection</button>
+              {loadingConnection.isLoadingTest ? <div className="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-blue-600" /> : ''} Test Connection</button>
               <button type="submit" className={`px-2 sm:px-4 py-2 flex items-center justify-center gap-2 ${isConnected ? 'bg-red-700 hover:bg-red-600' : 'bg-green-700 hover:bg-green-600'}`}>
-              {loadingConnection.isLoadingConnect ? <div class="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-green-600" /> : ''} { isConnected ? 'Connected' : 'Connect'}</button>
+              {loadingConnection.isLoadingConnect ? <div className="border-gray-300 h-4 w-4 animate-spin rounded-full border-2 border-t-green-600" /> : ''} { isConnected ? 'Connected' : 'Connect'}</button>
             </div>
           </div>
         </form>

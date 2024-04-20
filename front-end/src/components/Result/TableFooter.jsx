@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-export default function TableFooter({ range, setPage, page, slice, length }){
+export default function TableFooter({ range, setPage, page, slice, length }){ 
   useEffect(() => {
     if (slice.length < 1 && page !== 1) {
       setPage(page - 1);
@@ -8,7 +8,7 @@ export default function TableFooter({ range, setPage, page, slice, length }){
   }, [slice, page, setPage]);
   return (
     <div className="py-2 w-full font-medium text-left text-base text-[#2c3e50] mt-2 flex items-center justify-between">
-      <p>Rows {page} to {length < 10 ? length : 10} of {length}</p>
+      <p>Rows {slice.length === 10 ? slice.length * page - 9 : range[range.length - 2] * 10 + 1} to {slice.length === 10 ? page * slice.length : length} of {length}</p>
       <div>
       {range.map((el, index) => (
         <button
